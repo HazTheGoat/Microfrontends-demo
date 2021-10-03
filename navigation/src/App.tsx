@@ -1,19 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { ChakraProvider } from "@chakra-ui/react";
-
+import { RecoilRoot } from 'recoil';
 import "./index.css";
 import Navigation from "./components/Navigation";
 
 const App = () => (
   <div>
-    <Navigation></Navigation>
+    <RecoilRoot>
+      <ChakraProvider>
+          <Navigation></Navigation>
+      </ChakraProvider>
+    </RecoilRoot>
   </div>
 );
 
 ReactDOM.render(
-  <ChakraProvider>
-    <App />
-  </ChakraProvider>,
+    <App />,
   document.getElementById("app")
 );

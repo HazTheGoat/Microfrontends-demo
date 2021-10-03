@@ -40,10 +40,13 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "starter",
+      name: "root",
       filename: "remoteEntry.js",
       remotes: {},
-      exposes: {},
+      exposes: {
+        "./atoms": "./src/state/atoms",
+        "./selectors": "./src/state/selectors",
+      },
       shared: {
         ...deps,
         react: {
@@ -54,6 +57,9 @@ module.exports = {
           singleton: true,
           requiredVersion: deps["react-dom"],
         },
+        recoil: {
+          singleton: true
+        }
       },
     }),
     new HtmlWebPackPlugin({

@@ -1,27 +1,22 @@
 import React from "react";
 import {
   Box,
-  Flex,
-  Text,
-  IconButton,
-  Button,
   Stack,
-  Collapse,
-  Icon,
   Link,
   Popover,
   PopoverTrigger,
-  PopoverContent,
-  useColorModeValue,
-  useBreakpointValue,
-  useDisclosure,
   Badge,
   Heading,
 } from "@chakra-ui/react";
 import { NAV_ITEMS } from "./navigation.config";
-import { StarIcon } from "@chakra-ui/icons";
+import {useRecoilValue} from 'recoil';
+import { cartItemsCountSelector } from "../../../root/src/state/selectors";
 
 export const Navigation = () => {
+  
+  const cartItemsLength = useRecoilValue(cartItemsCountSelector);
+
+
   return (
     <>
       <Stack my={5} direction={"row"} justifyContent={"center"}>
@@ -43,7 +38,7 @@ export const Navigation = () => {
             </Box>
           ))}
           <Box>
-            <Badge colorScheme="green">Cart: 12</Badge>
+            <Badge colorScheme="green">Cart: {cartItemsLength}</Badge>
           </Box>
         </Stack>
       </Stack>

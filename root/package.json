@@ -17,7 +17,6 @@
     "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/preset-env": "^7.10.3",
     "@babel/preset-react": "7.9.4",
-    "@babel/preset-typescript": "^7.10.4",
     "@types/react": "^16.9.46",
     "@types/react-dom": "^16.9.8",
     "babel-loader": "^8.2.2",
@@ -34,6 +33,9 @@
     "@emotion/styled": "^11",
     "framer-motion": "^4",
     "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "react-dom": "^16.13.0",
+    "recoil": "^0.4.1",
+    "@babel/preset-typescript": "^7.10.4",
+
   }
 }
