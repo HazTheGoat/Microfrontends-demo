@@ -10,7 +10,7 @@ module.exports = {
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
   },
-
+  devtool: "source-map",
   devServer: {
     port: 8082,
   },
@@ -42,10 +42,14 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "root",
       filename: "remoteEntry.js",
-      remotes: {},
+      remotes: {
+        nav: "nav@http://localhost:8080/remoteEntry.js",
+        list: "list@http://localhost:8081/remoteEntry.js",
+      },
       exposes: {
         "./atoms": "./src/state/atoms",
         "./selectors": "./src/state/selectors",
+        "./item": "./src/types/Item",
       },
       shared: {
         ...deps,

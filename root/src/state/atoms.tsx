@@ -1,6 +1,8 @@
 import { atom } from "recoil";
-import { Cart, Item } from "../types/Cart";
+import { Cart } from "../types/Cart";
+import { Item } from "../types/Item";
 import { fakeItems } from "./../fakeData";
+
 export const cartAtom = atom<Cart>({
   key: "cartAtom",
   default: {

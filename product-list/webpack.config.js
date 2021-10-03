@@ -6,7 +6,7 @@ module.exports = {
   output: {
     publicPath: "http://localhost:8081/",
   },
-
+  devtool: "source-map",
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
   },
@@ -40,10 +40,14 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "starter",
+      name: "list",
       filename: "remoteEntry.js",
-      remotes: {},
-      exposes: {},
+      remotes: {
+        root: "root@http://localhost:8082/remoteEntry.js",
+      },
+      exposes: {
+        "./list": "./src/components/ProductList",
+      },
       shared: {
         ...deps,
         react: {
@@ -53,6 +57,9 @@ module.exports = {
         "react-dom": {
           singleton: true,
           requiredVersion: deps["react-dom"],
+        },
+        recoil: {
+          singleton: true,
         },
       },
     }),

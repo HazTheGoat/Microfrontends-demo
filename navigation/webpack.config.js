@@ -10,7 +10,7 @@ module.exports = {
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js", ".json"],
   },
-
+  devtool: "source-map",
   devServer: {
     port: 8080,
   },
@@ -40,12 +40,14 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "navigation",
+      name: "nav",
       filename: "remoteEntry.js",
       remotes: {
         root: "root@http://localhost:8082/remoteEntry.js",
       },
-      exposes: {},
+      exposes: {
+        "./nav": "./src/components/Navigation",
+      },
       shared: {
         ...deps,
         react: {
@@ -57,8 +59,8 @@ module.exports = {
           requiredVersion: deps["react-dom"],
         },
         recoil: {
-          singleton: true
-        }
+          singleton: true,
+        },
       },
     }),
     new HtmlWebPackPlugin({
