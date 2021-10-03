@@ -43,8 +43,8 @@ module.exports = {
       name: "root",
       filename: "remoteEntry.js",
       remotes: {
-        nav: "nav@http://localhost:8080/remoteEntry.js",
-        list: "list@http://localhost:8081/remoteEntry.js",
+        navigation: "navigation@http://localhost:8080/remoteEntry.js",
+        productlist: "productlist@http://localhost:8081/remoteEntry.js",
       },
       exposes: {
         "./atoms": "./src/state/atoms",

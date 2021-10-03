@@ -1,3 +1,8 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.grid {
+	border: "2px solid red"
+}
+

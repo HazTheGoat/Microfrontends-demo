@@ -9,13 +9,11 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import { NAV_ITEMS } from "./navigation.config";
-import {useRecoilValue} from 'recoil';
+import { useRecoilValue } from "recoil";
 import { cartItemsCountSelector } from "root/selectors";
 
 export const Navigation = () => {
-  
   const cartItemsLength = useRecoilValue(cartItemsCountSelector);
-
 
   return (
     <>

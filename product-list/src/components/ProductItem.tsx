@@ -49,7 +49,9 @@ const ProductItem = ({ item }: Item) => {
               </Box>
             </Box>
             <Box>
-              <Button onClick={() => handleAddToCart()}>Buy</Button>
+              <Button colorScheme="teal" onClick={() => handleAddToCart()}>
+                Buy
+              </Button>
             </Box>
           </Stack>
         </Box>

@@ -40,7 +40,7 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "nav",
+      name: "navigation",
       filename: "remoteEntry.js",
       remotes: {
         root: "root@http://localhost:8082/remoteEntry.js",
