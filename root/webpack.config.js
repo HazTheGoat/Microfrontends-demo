@@ -58,8 +58,8 @@ module.exports = {
           requiredVersion: deps["react-dom"],
         },
         recoil: {
-          singleton: true
-        }
+          singleton: true,
+        },
       },
     }),
     new HtmlWebPackPlugin({

@@ -1,9 +1,11 @@
 export interface Cart {
-    items: Item[]
+  items: Item[];
 }
 
 export interface Item {
-    id: string,
-    name: string,
-    quantity: number
+  id: string;
+  name: string;
+  description: string;
+  quantity: number;
+  price: number;
 }
