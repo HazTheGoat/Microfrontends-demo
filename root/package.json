@@ -35,7 +35,6 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "recoil": "^0.4.1",
-    "@babel/preset-typescript": "^7.10.4",
-
+    "@babel/preset-typescript": "^7.10.4"
   }
 }

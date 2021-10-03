@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { NAV_ITEMS } from "./navigation.config";
 import {useRecoilValue} from 'recoil';
-import { cartItemsCountSelector } from "../../../root/src/state/selectors";
+import { cartItemsCountSelector } from "root/selectors";
 
 export const Navigation = () => {
   
