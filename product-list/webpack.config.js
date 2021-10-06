@@ -40,14 +40,20 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "productlist",
+      name: "productlist", // NB: Vi gir appen et navn
       filename: "remoteEntry.js",
+      // NB: Vi setter opp applikasjoner vi skal bruke/importere som "remotes"
       remotes: {
         root: "root@http://localhost:8082/remoteEntry.js",
       },
+      /**
+       * Vi eksponerer/eksporterer ProductList som "list".
+       * Kan importeres som "productlist/list"
+       */
       exposes: {
         "./list": "./src/components/ProductList",
       },
+      // Alle libs vi vil dele på tvers av appene
       shared: {
         ...deps,
         react: {

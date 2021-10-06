@@ -1,14 +1,16 @@
 import React from "react";
-import { Item } from "root/item";
+import { Item } from "root/item"; // NB: Importere fra root appen
 import { Box, Button, Image, Stack, Heading } from "@chakra-ui/react";
 import { useRecoilState } from "recoil";
-import { cartAtom } from "root/atoms";
+import { cartAtom } from "root/atoms"; // NB: Importere fra root appen
 import { Cart } from "../../../root/src/types/Cart";
 
 const ProductItem = ({ item }: Item) => {
+  // NB: Vi importerer cartAtom state fra root appen
   const [cart, setCart] = useRecoilState<Cart>(cartAtom);
 
   const handleAddToCart = () => {
+    // NB: Vi oppdaterer state i root appen
     setCart((e) => {
       console.log("E: ", e);
 

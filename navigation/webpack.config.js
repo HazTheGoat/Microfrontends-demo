@@ -40,14 +40,21 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "navigation",
+      name: "navigation", // NB: Vi gir appen et navn
       filename: "remoteEntry.js",
+      // NB: Vi setter opp applikasjoner vi skal bruke/importere som "remotes"
       remotes: {
         root: "root@http://localhost:8082/remoteEntry.js",
       },
+      /**
+       * NB:
+       * Vi eksponerer/eksporterer komponenter
+       * Kan importeres som "navigation/nav"
+       */
       exposes: {
         "./nav": "./src/components/Navigation",
       },
+      // NB: Alle libs vi vil dele på tvers av appene
       shared: {
         ...deps,
         react: {

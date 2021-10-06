@@ -3,58 +3,44 @@ import ReactDOM from "react-dom";
 import { Box, Button, ChakraProvider, Stack } from "@chakra-ui/react";
 import { RecoilRoot } from "recoil";
 
-import ProductList from "productlist/list";
-import Navigation from "navigation/nav";
+import ProductList from "productlist/list"; // NB: Importere fra productlist appen
+import Navigation from "navigation/nav"; // NB: Importere fra navigation appen
 import "./index.css";
+import {
+  NavigationBox,
+  ProductListBox,
+  ShellBox,
+} from "./components/custom-components";
+import ShowAppBorders from "./components/show-app-border";
 
 const App = () => {
   const [showAppBorders, setShowAppBorders] = useState<boolean>(false);
 
   return (
+    /**
+     * NB: Vi bruker Recoil state management og setter opp provider
+     */
     <RecoilRoot>
       <ChakraProvider>
         <Stack direction="row" justifyContent="center">
-          <Stack
-            width="800"
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <Box
-              p={2}
-              m={2}
-              borderWidth={showAppBorders && "4px"}
-              borderColor="Blue"
-              borderStyle="dashed"
-            >
-              <Box
-                p={2}
-                m={2}
-                borderWidth={showAppBorders && "4px"}
-                borderColor="red"
-                borderStyle="dashed"
-              >
-                <Navigation className="navigation" />
-              </Box>
-              <Box
-                p={2}
-                m={2}
-                borderWidth={showAppBorders && "4px"}
-                borderColor="green"
-                borderStyle="dashed"
-              >
-                <ProductList />
-              </Box>
-            </Box>
-          </Stack>
+          <ShellBox borderWidth={showAppBorders && "4px"}>
+            <NavigationBox borderWidth={showAppBorders && "4px"}>
+              {/**
+               * NB: Navigation appen
+               */}
+              <Navigation className="navigation" />
+            </NavigationBox>
+            <ProductListBox borderWidth={showAppBorders && "4px"}>
+              {/**
+               * NB: ProductList appen
+               */}
+              <ProductList />
+            </ProductListBox>
+          </ShellBox>
         </Stack>
-        <Stack justifyContent="center" alignItems="center">
-          <Box mt={2}>
-            <Button onClick={() => setShowAppBorders(!showAppBorders)}>
-              Show app borders
-            </Button>
-          </Box>
-        </Stack>
+        <ShowAppBorders
+          setShowAppBorders={() => setShowAppBorders(!showAppBorders)}
+        />
       </ChakraProvider>
     </RecoilRoot>
   );

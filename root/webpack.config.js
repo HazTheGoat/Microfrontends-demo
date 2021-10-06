@@ -40,17 +40,24 @@ module.exports = {
 
   plugins: [
     new ModuleFederationPlugin({
-      name: "root",
+      name: "root", // NB: Vi gir appen et navn
       filename: "remoteEntry.js",
+      // NB: Vi setter opp applikasjoner vi skal bruke/importere som "remotes"
       remotes: {
         navigation: "navigation@http://localhost:8080/remoteEntry.js",
         productlist: "productlist@http://localhost:8081/remoteEntry.js",
       },
+      /**
+       * NB:
+       * Vi eksponerer/eksporterer komponenter og state.
+       * Kan importeres som "root/atoms", "root/selectors" og "root/item"
+       */
       exposes: {
         "./atoms": "./src/state/atoms",
         "./selectors": "./src/state/selectors",
         "./item": "./src/types/Item",
       },
+      // NB: Alle libs vi vil dele på tvers av appene
       shared: {
         ...deps,
         react: {
